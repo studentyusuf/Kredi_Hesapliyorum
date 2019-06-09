@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>Kredi Sonuçları</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'table/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				
+				<p style="font-family: Lata; font-size: 24px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+					Kredi Sonuçları
+				</p>
+				<hr>
+				<p style="display: inline-block; font-family: Lato-Bold; font-size: 14px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+					Ad: 
+					<span style="display: inline-block; margin-left: 5px;">
+						<p style="display: inline-block; font-family: Lato; font-size: 14px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+							{{ name }}
+						</p>
+					</span>	
+				</p>
+				<p style="display: inline-block; font-family: Lato-Bold; font-size: 14px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+					Telefon: 
+					<span style="display: inline-block; margin-left: 5px;"> 
+						<p style="display: inline-block; font-family: Lato; font-size: 14px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+							{{ phone }}
+						</p>
+					</span>
+				</p>
+				<p style="display: inline-block; font-family: Lato-Bold; font-size: 14px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+					E-Mail: 
+					<span style="display: inline-block; margin-left: 5px;">
+						<p style="display: inline-block; font-family: Lato; font-size: 14px; color: #555555; line-height: 1.4; text-transform: uppercase; background-color: transparent;">
+							{{ email }}
+						</p>
+					</span>
+				</p>
+				
+
+				<div class="table100 ver5 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">MEBLAĞ</th>
+									<th class="cell100 column2">Vade</th>
+									<th class="cell100 column3">Faiz Oranı</th>
+									<th class="cell100 column4">Aylık Tutar</th>
+									<th class="cell100 column5">Toplam Borç</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody>
+								{% for money, degerler in docs %}
+									{% for deger in degerler %}
+										<tr class="row100 body">
+											<td class="cell100 column1">
+												{{ money }}
+											</td>
+											<td class="cell100 column2">
+												{{ deger.0 }} ay
+											</td>
+											<td class="cell100 column3">
+												%{{ deger.1 }}
+											</td>
+											<td class="cell100 column4">
+												{{ deger.2 }}
+											</td>
+											<td class="cell100 column5">
+												{{ deger.4 }}
+											</td>
+										</tr>
+									{% endfor %}
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!--===============================================================================================-->	
+	<script src="{% static 'table/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'table/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+			
+		
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/js/main.js' %}"></script>
+
+</body>
+</html>

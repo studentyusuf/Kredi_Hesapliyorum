@@ -1,1 +1,1 @@
-# Kredi_Hesapliyorum
+# Kredi-Hesapliyorum
